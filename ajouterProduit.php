@@ -24,17 +24,19 @@ try{
 
 
 <h1 class="text-center">AJOUTER UN PRODUIT</h1>
-
+<!-- Appel de la page du traitement du formulaire-->
 <form action="enregistrerProduit.php" method="post">
 
     <!--NOM DU PRODUIT-->
     <div class="form-group">
+        <!--ICI on recup l'attibut name et sa valeur avec $_POST['nom_produit']-->
         <label for="nom_produit">Nom du produit</label>
         <input type="text" pattern="^[A-Za-z '-]+$" class="form-control" id="nom_produit" name="nom_produit" required>
     </div>
 
     <!--DESCRIPTION DU PRODUIT-->
     <div class="form-group">
+        <!--ICI on recup l'attibut name et sa valeur avec $_POST['description_produit']-->
         <label for="description_produit">Description du produit</label>
         <textarea rows="5" class="form-control" id="description_produit" name="description_produit" required></textarea>
     </div>
@@ -42,17 +44,20 @@ try{
     <!--IMAGE DU PRODUIT-->
     <div class="form-group">
         <label for="image_produit">Image du produit</label>
+        <!--ICI on recup l'attibut name et sa valeur avec $_POST['image_produit']-->
         <input type="text" class="form-control" id="image_produit" name="image_produit" required>
     </div>
 
     <!--PRIX DU PRODUIT-->
     <div class="form-group">
         <label for="prix_produit">Prix du produit</label>
-        <input type="number" min="1" max="10000000000" class="form-control" id="prix_produit" name="prix_produit" required>
+        <!--ICI on recup l'attibut name et sa valeur avec $_POST['prix_produit']-->
+        <input type="text"  step="4" class="form-control" id="prix_produit" name="prix_produit" required>
     </div>
-    
 
-    <div class="form-group">
+
+    <div class="form-group mt-5">
+        <!--ICI on le type submit appel le l'atribut action du formulaire-->
         <button type="submit" class="btn btn-outline-success">Ajouter le produit</button>
     </div>
 
@@ -70,6 +75,6 @@ var_dump($description_produit);
 var_dump($image_produit);
 var_dump($prix_produit);
 
-
+//Appel du template
 $content = ob_get_clean();
 require "template.php";

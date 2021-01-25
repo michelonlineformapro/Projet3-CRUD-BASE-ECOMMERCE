@@ -22,22 +22,26 @@ try{
 
 
 //Recupation de input name = nom du produit
+//Si la variable existe et si elle n'est pas vide alors
 if(isset($_POST['nom_produit']) && !empty($_POST['nom_produit'])){
-    $nom_produit = htmlspecialchars($_POST['nom_produit']);
-    var_dump($nom_produit);
+    $nom_produit = htmlspecialchars(strip_tags($_POST['nom_produit']));
+    //on stock $_POPST[''] dans une variable et on supprime les balise html avec htmlspecialchar et striptags
+    //Le premier supprime complétement les balises html et php, l'autre convertit les caractères spéciaux en entité HTML
+    // ("<" devient "&lt;" par exemple) mais ton lien le montre bien.
 }else{
+    //Sinon on affiche une erreur
     echo "<p class='alert-danger'>Erreur, merci de remplir le champ nom du produit</p>";
 }
 //Recup de la description du produit
 if(isset($_POST['description_produit']) && !empty($_POST['description_produit'])){
-    $description_produit = htmlspecialchars($_POST['description_produit']);
+    $description_produit = htmlspecialchars(strip_tags($_POST['description_produit']));
     var_dump($description_produit);
 }else{
     echo "<p class='alert-danger'>Erreur, merci de remplir le champ description du produit</p>";
 }
 //Recupération de l'url de la photo
 if(isset($_POST['image_produit']) && !empty($_POST['image_produit'])){
-    $image_produit = htmlspecialchars($_POST['image_produit']);
+    $image_produit = htmlspecialchars(strip_tags($_POST['image_produit']));
     var_dump($image_produit);
 }else{
     echo "<p class='alert-danger'>Erreur, merci de remplir le champ image du produit</p>";
@@ -46,23 +50,26 @@ if(isset($_POST['image_produit']) && !empty($_POST['image_produit'])){
 
 //Recuperation du prix
 if(isset($_POST['prix_produit']) && !empty($_POST['prix_produit'])){
-    $prix_produit = $_POST['prix_produit'];
+    $prix_produit = htmlspecialchars(strip_tags($_POST['prix_produit']));
     var_dump($prix_produit);
 }else{
     echo "<p class='alert-danger'>Erreur, merci de remplir le champ prix du produit</p>";
 }
 
-
+//On ecrit la reqète SQL soit inserer dans la table produits les(element) auquel on assigne une valeurs
 $sql = "INSERT INTO produits (nom_produit, description_produit, image_produit, prix_produit) VALUES (?,?,?,?)";
+//Creation d'une requète péparée avec la fonction prepare de PDO qui execute la requète SQL
 $requete_insertion = $db->prepare($sql);
+//On lie les elements les 4 ???? a la variable récupérée dans le formulaire
 $requete_insertion->bindParam(1, $nom_produit);
 $requete_insertion->bindParam(2, $description_produit);
 $requete_insertion->bindParam(3, $image_produit);
 $requete_insertion->bindParam(4, $prix_produit);
 
-$requete_insertion->execute(array($nom_produit, $description_produit, $image_produit, $prix_produit));
 
-if($requete_insertion){
+//Si l'insertion fonctionne
+if($requete_insertion->execute(array($nom_produit, $description_produit, $image_produit, $prix_produit))){
+    //Message de réusite + bouton de retour à la liste
     echo "<p class='alert-success'>Votre produit à bien été ajouté !</p>";
     echo "<a href='listeProduit.php' class='btn btn-outline-success'>Retour à la liste des produit</a>";
 }else{
