@@ -57,13 +57,14 @@ try{
 
 
     <div class="form-group mt-5">
-        <!--ICI on le type submit appel le l'atribut action du formulaire-->
+        <!--ICI  le type submit appel le l'atribut action= du formulaire-->
         <button type="submit" class="btn btn-outline-success">Ajouter le produit</button>
     </div>
 
 </form>
 
 <?php
+/*
 //Recupation de input name = nom du produit
 $nom_produit = $_POST['nom_produit'];
 $description_produit = $_POST['description_produit'];
@@ -74,7 +75,7 @@ var_dump($nom_produit);
 var_dump($description_produit);
 var_dump($image_produit);
 var_dump($prix_produit);
-
+*/
 //Appel du template
 $content = ob_get_clean();
 require "template.php";

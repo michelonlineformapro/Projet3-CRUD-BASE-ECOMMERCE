@@ -26,7 +26,7 @@ try{
 if(isset($_POST['nom_produit']) && !empty($_POST['nom_produit'])){
     $nom_produit = htmlspecialchars(strip_tags($_POST['nom_produit']));
     //on stock $_POPST[''] dans une variable et on supprime les balise html avec htmlspecialchar et striptags
-    //Le premier supprime complétement les balises html et php, l'autre convertit les caractères spéciaux en entité HTML
+    //Le premier supprime complétement les balises html et php et javascript, l'autre convertit les caractères spéciaux en entité HTML
     // ("<" devient "&lt;" par exemple) mais ton lien le montre bien.
 }else{
     //Sinon on affiche une erreur
