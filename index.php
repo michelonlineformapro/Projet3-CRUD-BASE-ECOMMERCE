@@ -1,6 +1,6 @@
 <?php
 $title = "Ecommerce - ACCEUIL -";
-ob_start();
+
 
 ?>
     <h1 class="text-danger text-center">BAZAR.COM</h1>
@@ -9,5 +9,5 @@ ob_start();
     </div>
 
 <?php
-$content = ob_get_clean();
+$content = ob_start();
 require "template.php";

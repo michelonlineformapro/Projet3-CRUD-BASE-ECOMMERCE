@@ -60,7 +60,7 @@ foreach($db->query("SELECT * FROM produits") as $row){
             <td><?php echo $row['prix_produit'] ?> €</td>
             <td><a href="detailsProduit.php?id_produit=<?= $row['id_produit']  ?> " class="btn btn-warning">Détails du produits</a></td>
             <td><a href="" class="btn btn-info">Mettre à jour le produits</a></td>
-            <td><a href="" class="btn btn-danger">Supprimer le produits</a></td>
+            <td><a href="suprProduit.php?id=<?= $row['id_produit'] ?>" class="btn btn-danger">Supprimer le produits</a></td>
         </tr>
         <?php
 

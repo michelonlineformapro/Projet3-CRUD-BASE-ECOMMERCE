@@ -25,7 +25,7 @@ try{
 //Si la variable existe et si elle n'est pas vide alors
 if(isset($_POST['nom_produit']) && !empty($_POST['nom_produit'])){
     $nom_produit = htmlspecialchars(strip_tags($_POST['nom_produit']));
-    //on stock $_POPST[''] dans une variable et on supprime les balise html avec htmlspecialchar et striptags
+    //on stock $_POST[''] dans une variable et on supprime les balise html avec htmlspecialchar et striptags
     //Le premier supprime complétement les balises html et php et javascript, l'autre convertit les caractères spéciaux en entité HTML
     // ("<" devient "&lt;" par exemple) mais ton lien le montre bien.
 }else{
@@ -77,13 +77,7 @@ if($requete_insertion->execute(array($nom_produit, $description_produit, $image_
 }
 
 
-
-
-
-
-
-
-
+/*
 $description_produit = $_POST['description_produit'];
 $image_produit = $_POST['image_produit'];
 $prix_produit = $_POST['prix_produit'];
@@ -93,7 +87,7 @@ $prix_produit = $_POST['prix_produit'];
 var_dump($description_produit);
 var_dump($image_produit);
 var_dump($prix_produit);
-
+*/
 
 //$content de template.php definis ce qui ce trouve dans le body
 //Retourne le contenu du tampon de sortie et termine la session de temporisation.
