@@ -50,7 +50,7 @@ $resultat = $db->query($sql);
     <tbody>
     <?php
     //Boucle de lecture (connexion = $db + fonction query() PDO + requète SQL = $row)
-foreach($db->query("SELECT * FROM produits") as $row){
+foreach($db->query("SELECT * FROM produits ORDER BY id_produit DESC") as $row){
     //Creation d'une liste pour chaque elements
     ?>
         <tr>
@@ -58,8 +58,8 @@ foreach($db->query("SELECT * FROM produits") as $row){
             <td><img src="<?= $row['image_produit'] ?>" alt="<?= $row['nom_produit'] ?>" title="<?= $row['nom_produit'] ?>"/></td>
             <td><?php echo $row['description_produit'] ?></td>
             <td><?php echo $row['prix_produit'] ?> €</td>
-            <td><a href="detailsProduit.php?id_produit=<?= $row['id_produit']  ?> " class="btn btn-warning">Détails du produits</a></td>
-            <td><a href="" class="btn btn-info">Mettre à jour le produits</a></td>
+            <td><a href="detailsProduit.php?id_produit=<?= $row['id_produit']  ?>" class="btn btn-warning">Détails du produits</a></td>
+            <td><a href="majProduit.php?id_maj=<?= $row['id_produit'] ?>" class="btn btn-info">Mettre à jour le produits</a></td>
             <td><a href="suprProduit.php?id=<?= $row['id_produit'] ?>" class="btn btn-danger">Supprimer le produits</a></td>
         </tr>
         <?php

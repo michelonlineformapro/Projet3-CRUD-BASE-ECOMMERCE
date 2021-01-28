@@ -47,7 +47,6 @@ if(isset($_POST['image_produit']) && !empty($_POST['image_produit'])){
     echo "<p class='alert-danger'>Erreur, merci de remplir le champ image du produit</p>";
 }
 
-
 //Recuperation du prix
 if(isset($_POST['prix_produit']) && !empty($_POST['prix_produit'])){
     $prix_produit = htmlspecialchars(strip_tags($_POST['prix_produit']));

@@ -31,7 +31,7 @@ try{
     <div class="form-group">
         <!--ICI on recup l'attibut name et sa valeur avec $_POST['nom_produit']-->
         <label for="nom_produit">Nom du produit</label>
-        <input type="text" pattern="^[A-Za-z '-]+$" class="form-control" id="nom_produit" name="nom_produit" required>
+        <input type="text" placeholder="Le nom du produits"  pattern="^[A-Za-z '-]+$" class="form-control" id="nom_produit" name="nom_produit" required>
     </div>
 
     <!--DESCRIPTION DU PRODUIT-->
