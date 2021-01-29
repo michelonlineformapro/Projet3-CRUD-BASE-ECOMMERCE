@@ -1,9 +1,12 @@
 <?php
+session_start();
 //Ici $title de template.php dans la balise <title><?= $title ></title>
 $title = "Ecommerce - NOS PRODUITS -";
 //ob_start() démarre la temporisation de sortie. Tant qu'elle est enclenchée, aucune donnée, 
 //hormis les en-têtes, n'est envoyée au navigateur, mais temporairement mise en tampon.
 ob_start();
+//Appel de la  session pour recupérer email et mot passe
+
     //COONEXION A LE BASE de DONNÉES
     //Stock des valeur nom utilistateur phpmyadmin et mot de passe
     $user = "root";
@@ -22,9 +25,17 @@ ob_start();
 
 ?>
 <div class="text-center">
-
+    <?php
+    if(isset($_SESSION['email']) && isset($_SESSION['password'])){
+        //Si session existe on affiche l'email de l'utilisateur
+        ?>
+        <h2 class="text-warning text-info">Votre espace d'administration : Bonjour <?= $_SESSION['email']  ?> </h2>
+        <a href="deconnexion.php" class="btn btn-danger">Deconnexion</a>
+        <?php
+    }
+    ?>
 <h1 class="text-warning text-info">BAZAR.COM</h1>
-<h2 class="text-warning text-info">Votre espace d'administration</h2>
+
 <a href="ajouterProduit.php" class="btn btn-outline-danger">AJOUTER UN PRODUIT</a>
 <?php
 //La requète sql stockée dans dans une variable
@@ -58,6 +69,8 @@ foreach($db->query("SELECT * FROM produits ORDER BY id_produit DESC") as $row){
             <td><img src="<?= $row['image_produit'] ?>" alt="<?= $row['nom_produit'] ?>" title="<?= $row['nom_produit'] ?>"/></td>
             <td><?php echo $row['description_produit'] ?></td>
             <td><?php echo $row['prix_produit'] ?> €</td>
+            <!-- ici on recupèbe bien la clé apres le ? $_GET['id_produit'] -> pour les details  $_GET['id_maj'] -> la mise a jour -->
+            <!-- =_GET['id'] -> pour efface une valeur-->
             <td><a href="detailsProduit.php?id_produit=<?= $row['id_produit']  ?>" class="btn btn-warning">Détails du produits</a></td>
             <td><a href="majProduit.php?id_maj=<?= $row['id_produit'] ?>" class="btn btn-info">Mettre à jour le produits</a></td>
             <td><a href="suprProduit.php?id=<?= $row['id_produit'] ?>" class="btn btn-danger">Supprimer le produits</a></td>

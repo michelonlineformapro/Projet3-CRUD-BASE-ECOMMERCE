@@ -1,4 +1,6 @@
 <?php
+//Demarre la session pour recup $_SESSION
+session_start();
 ob_start();
 $title = "Ecommerce - DÉTAILS DU PRODUITS -";
 
@@ -16,9 +18,7 @@ try{
 }catch(PDOException $exception){
     die("Erreur de connexion a PDO MySQL :" .$exception->getMessage());
 }
-
 ?>
-
 <h1>DETAILS DU PRODUITS </h1>
 <a href="listeProduit.php" class="btn btn-dark mt-5">Retour à la liste des produits</a>
 
@@ -45,6 +45,7 @@ $resultat = $requete->fetch();
 //Retourne un valeur true (vrai) si des resultat s'affiche
 if($resultat){
     ?>
+        <h1>RE BONJOUR = <?= $_SESSION['email']  ?></h1>
         <table class="table">
             <thead>
                 <tr>

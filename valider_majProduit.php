@@ -87,7 +87,6 @@ if($resultatUpdate){
     $requete->execute();
 //pour afficher les vaeurs de la tables produits on doit utilisé la fonction fectch = rechercher
     $resultat = $requete->fetch();
-
     ?>
     <div class="alert-success p-5">
         <h1 class="text-center text-warning">Votre produit à bien été modifié !</h1>
